@@ -1,5 +1,4 @@
 # 6-4
-from dnf.yum.misc import unlink_f
 
 dictionary = {
     'a': 'A',
