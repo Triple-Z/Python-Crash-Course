@@ -1,5 +1,6 @@
 # Python-Crash-Course
-Python Crash Course practices.
+
+:books: 《Python 编程 —— 从入门到实践》练习解答。
 
 ## Table of Contents
 
@@ -12,7 +13,7 @@ Python Crash Course practices.
 - [x] [Chapter 8](C8/): Function
 - [x] [Chapter 9](C9/): Class
 - [x] [Chapter 10](C10/): File & Exception
-- [x] [Chapter 11](C11/): Unit test
+- [x] [Chapter 11](C11/): Unit test & Class test
 
 ### Django
 
