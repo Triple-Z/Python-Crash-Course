@@ -1,6 +1,6 @@
 # Python-Crash-Course
 
-:books: 《Python 编程 —— 从入门到实践》练习解答。
+:books: 《Python 编程 —— 从入门到实践》习题解答。
 
 ## Table of Contents
 
@@ -15,8 +15,13 @@
 - [x] [Chapter 10](C10/): File & Exception
 - [x] [Chapter 11](C11/): Unit test & Class test
 
+### Pygame
+
+### Data Visualization
+
 ### Django
 
 - [ ] [Chapter 18](C18/): Introduction to Django
 - [ ] [Chapter 19](C19/): User account
 - [ ] [Chapter 20](C20/): Front-end style
+- [ ] [Project](learning_log/): Learning logs web application
