@@ -12,7 +12,7 @@ Python Crash Course practices.
 - [x] [Chapter 8](C8/): Function
 - [x] [Chapter 9](C9/): Class
 - [x] [Chapter 10](C10/): File & Exception
-- [ ] [Chapter 11](C11/): Unit test
+- [x] [Chapter 11](C11/): Unit test
 
 ### Django
 
