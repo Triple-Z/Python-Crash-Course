@@ -21,7 +21,7 @@
 
 ### Django
 
-- [ ] [Chapter 18](C18/): Introduction to Django
+- [x] [Chapter 18](C18/): Introduction to Django
 - [ ] [Chapter 19](C19/): User account
 - [ ] [Chapter 20](C20/): Front-end style
 - [ ] [Project](learning_log/): Learning logs web application
