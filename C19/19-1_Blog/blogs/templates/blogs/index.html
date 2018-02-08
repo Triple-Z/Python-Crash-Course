@@ -1,21 +1,20 @@
 {% extends 'blogs/base.html' %}
 
-{% block content %}
+{% block header %}
 
-    <p>
-        <a href="{% url 'blogs:new_blog' %}">Write a new blog</a>
-    </p>
-
-    <ul>
+    <div class="list-group list-group-flush my-3">
         {% for blog in blogs %}
-            <li>
-                <a href="{% url 'blogs:blog' blog.id %}">{{ blog.title }}</a>
-            </li>
+            <a class="list-group-item list-group-item-action" href=
+                    "{% url 'blogs:blog' blog.id %}">{{ blog.title }}</a>
         {% empty %}
-            <li>
-                There is no blog post.
-            </li>
+            <a class="list-group-item
+            list-group-item-danger list-group-item-action
+            disabled" >There is o blog post.</a>
         {% endfor %}
-    </ul>
+    </div>
+
+{% endblock %}
+
+{% block content %}
 
 {% endblock %}

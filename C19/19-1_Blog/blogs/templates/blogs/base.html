@@ -1,13 +1,73 @@
-<p>
-    <a href="{% url 'blogs:index' %}">Blogs</a> -
+{% load bootstrap4 %}
 
-    {% if user.is_authenticated %}
-        Hello, {{ user.username }} -
-        <a href="{% url 'users:logout' %}">Log out</a>
-    {% else %}
-        <a href="{% url 'users:login' %}">Log in</a> -
-        <a href="{% url 'users:register' %}">Register</a>
-    {% endif %}
-</p>
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-{% block content %}{% endblock %}
+    <title> Blog </title>
+
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'blogs:index' %}">Blog</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href=
+                                    "{% url 'blogs:new_blog' %}">New Blog</a>
+                        </li>
+                    {% endif %}
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <span class="navbar-text">
+                            Hello, {{ user.username }}
+                        </span>
+                        <li class="nav-item">
+                            <a href="{% url 'users:logout' %}" class="btn
+                        btn-light mx-2">Log out</a>
+                        </li>
+                    {% else %}
+                        {% block log-btns %}
+                            <li class="nav-item">
+                                <a href="{% url 'users:register' %}"
+                                   class="btn btn-light ">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'users:login' %}" class="btn
+                                btn-primary mx-2">Log in</a>
+                            </li>
+                        {% endblock %}
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header my-5">
+            {% block header %}{% endblock %}
+        </div>
+        <div class="my-4">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <nav class="navbar fixed-bottom navbar-dark bg-dark">
+        <span class="navbar-text mx-auto">
+             Copyright &copy; 2018 <a href="https://triplez.cn">TripleZ</a>
+        </span>
+    </nav>
+</body>
+</html>

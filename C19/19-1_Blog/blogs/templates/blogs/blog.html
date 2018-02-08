@@ -1,13 +1,29 @@
 {% extends 'blogs/base.html' %}
 
+{% block header %}
+
+    <div class="row">
+        <div class="col">
+            <h2 class="">{{ blog.title }}</h2>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="col-md-auto mx-5">
+            <a class="btn btn-outline-info" href=
+                    "{% url 'blogs:edit_blog' blog.id %}">Edit blog</a>
+        </div>
+        {% endif %}
+    </div>
+
+
+    <h5 class="my-auto">Publish time:
+        {{ blog.date_added|date:'M d, Y H:i' }}</h5>
+
+{% endblock %}
+
 {% block content %}
 
-    <p>{{ blog.title }}</p>
-    <p>Publish time: {{ blog.date_added|date:'M d, Y H:i' }}</p>
-    <p>{{ blog.text }}</p>
-
-    <p>
-        <a href="{% url 'blogs:edit_blog' blog.id %}">Edit blog</a>
-    </p>
+    <div class="">
+        <p>{{ blog.text }}</p>
+    </div>
 
 {% endblock %}
