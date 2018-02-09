@@ -1,10 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Topic, Entry
 from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from .forms import TopicForm, EntryForm
 from django.contrib.auth.decorators import login_required
 from .auth import check_topic_owener
+from django.db.models import Q
 
 
 def index(request):
@@ -15,7 +16,8 @@ def index(request):
 @login_required
 def topics(request):
     """Show all the topics"""
-    topics = Topic.objects.filter(owner=request.user).order_by('date_added')
+    topics = Topic.objects.filter(Q(owner=request.user) | Q(
+        public=True)).order_by('date_added')
     context = {'topics': topics}
     return render(request, 'learning_logs/topics.html', context)
 
@@ -23,12 +25,14 @@ def topics(request):
 @login_required
 def topic(request, topic_id):
     """Show specific topic"""
-    topic = Topic.objects.get(id=topic_id)
+    # topic = Topic.objects.get(id=topic_id)
+    topic = get_object_or_404(Topic, id=topic_id)
     if not check_topic_owener(request, topic_id):
         raise Http404
     entries = topic.entry_set.order_by('-date_added')
     context = {'topic': topic, 'entries': entries}
     return render(request, 'learning_logs/topic.html', context)
+
 
 
 @login_required
